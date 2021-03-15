@@ -7,7 +7,7 @@ class Controller:
 		self.display = display
 		self.clock = clock
 		self.game_states = game_states
-		self.current_state = self.game_states[starting_state]
+		self.current_state = self.game_states[starting_state]()
 		self.event_handler = EventHandler()
 	
 	def run_game(self):

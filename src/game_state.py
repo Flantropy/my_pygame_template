@@ -1,9 +1,12 @@
+from gfx import GFX
+
+
 class GameState:
 	def __init__(self):
-		pass
+		self.gfx = GFX()
 	
 	def update(self):
-		pass
+		self.gfx.update()
 	
 	def render(self, display):
-		pass
+		self.gfx.render(display)
