@@ -10,6 +10,7 @@ class Controller:
 		self.current_state = self.game_states[starting_state]()
 		self.event_handler = EventHandler()
 	
+	# main loop
 	def run_game(self):
 		while True:
 			# Tick Clock
