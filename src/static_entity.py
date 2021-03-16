@@ -1,5 +1,6 @@
 import pygame
 import constants as c
+import ultracolors as color
 
 
 class StaticEntity(pygame.sprite.Sprite):
@@ -7,12 +8,14 @@ class StaticEntity(pygame.sprite.Sprite):
 		super(StaticEntity, self).__init__()
 		self.image = image
 		self.rect = self.image.get_rect()
+		self.color = color.YELLOW
+		self.image.fill(self.color)
 		self.pos_x = 0.0
 		self.pos_y = 0.0
 		self.vel_x = 0.0
 		self.vel_y = 0.0
-	
-	def _update(self, *args, **kwargs):
+		
+	def update(self, *args, **kwargs):
 		self.update_pos()
 	
 	def update_pos(self):
