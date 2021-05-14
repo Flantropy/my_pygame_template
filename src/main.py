@@ -1,14 +1,14 @@
-import init
-import constants as c
+import pygame
+from constants import DISPLAY_SIZE
+from controller import Controller
 
 
 def main():
-	display = init.get_display()
-	clock = init.get_clock()
-	game_states = init.get_game_states()
-	controller = init.get_controller(display, clock, game_states, c.STARTING_STATE)
-	controller.run_game()
-	
-	
+    display = pygame.display.set_mode(DISPLAY_SIZE)
+    clock = pygame.time.Clock()
+    controller = Controller(display, clock)
+    controller.run_game()
+
+
 if __name__ == '__main__':
-	main()
+    main()
