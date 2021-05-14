@@ -1,5 +1,8 @@
 from statemachine import State, StateMachine
 
+from game_states.load_screen import LoadScreen
+from game_states.main_menu import MainMenu
+
 
 class FSM(StateMachine):
     loadscreen = State("Loadscreen", initial=True)
@@ -14,6 +17,12 @@ class FSM(StateMachine):
     quit = on_hold.to(main_menu)
     close = main_menu.to(loadscreen)
     
+    def on_load(self):
+        self.model.current_scene = MainMenu()
+    
+    def on_close(self):
+        self.model.current_scene = LoadScreen()
+    
     @staticmethod
     def on_enter_loadscreen():
         print("loading started")
@@ -21,11 +30,3 @@ class FSM(StateMachine):
     @staticmethod
     def on_enter_main_menu():
         print("welcome to main menu")
-    
-    @staticmethod
-    def on_load():
-        print("loading finished")
-    
-    @staticmethod
-    def on_close():
-        print("back to loadscreen")
