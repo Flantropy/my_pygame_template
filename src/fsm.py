@@ -1,7 +1,11 @@
 from statemachine import State, StateMachine
 
-from game_states.load_screen import LoadScreen
-from game_states.main_menu import MainMenu
+from game_states import (
+    LoadScreen,
+    MainMenu,
+    Game,
+    Pause
+)
 
 
 class FSM(StateMachine):
@@ -19,6 +23,18 @@ class FSM(StateMachine):
     
     def on_load(self):
         self.model.current_scene = MainMenu()
+        
+    def on_play(self):
+        self.model.current_scene = Game()
+        
+    def on_pause(self):
+        self.model.current_scene = Pause()
+        
+    def on_resume(self):
+        self.model.current_scene = Game()
+        
+    def on_quit(self):
+        self.model.current_scene = MainMenu()
     
     def on_close(self):
         self.model.current_scene = LoadScreen()
@@ -30,3 +46,11 @@ class FSM(StateMachine):
     @staticmethod
     def on_enter_main_menu():
         print("welcome to main menu")
+        
+    @staticmethod
+    def on_enter_game():
+        print("game started")
+        
+    @staticmethod
+    def on_enter_on_hold():
+        print("pause")
